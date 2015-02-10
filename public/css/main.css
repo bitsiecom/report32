@@ -5,9 +5,18 @@ html {
 
 body {
 	background: #111;
+	font-family: "Montserrat", "Helvetica", "Arial";
+	background-color: #F7931A;
 }
 
 img {
 	height:100%;
 	width:100%;
+}
+.report-container {
+	background: white;
+	display: none;
+}
+.indicator {
+	display: none;
 }

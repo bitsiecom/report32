@@ -22,7 +22,6 @@ function errorHandler(err, req, res, next) {
 app.get('/api/report', function (req, res) {
 	var xpub = req.query.xpub;
 	var numDerivations = req.query.derivations;
-
 	var report = new Report();
 	report.run(xpub, numDerivations).then(function(data) {
 		res.send(data);

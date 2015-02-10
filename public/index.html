@@ -1,10 +1,131 @@
 <html>
 <head>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/main.css" type="text/css" />
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+      <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
 </head>
 <body>
 
-	<img src="/img/dude.gif" />
+	<div class="container-fluid">
+		<div class="col-xs-12 banner text-center">
+			<h1>HD REPORT</h1>
+			<h3>Simple Account Report for HD Wallets</h3>
+			<p>Short description of product goes here....</p>
+			<div class="indicator">Loading...</div>
+			<hr/>
+		</div>
 
+		<div class="col-xs-6 col-xs-offset-3 well">
+			<form id="hd-report-form" class="form">
+			  <div class="form-group">
+			  	<div class="col-xs-9">
+				    <label for="exampleInputEmail1">Public Key <a href="#" class="pull-right"><small>Where do I find this? <i class="fa fa-info"></i></small></a></label>
+				    <input type="text" class="form-control" id="public-key-input"  name="xpub" value="xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8" placeholder="Enter public key">
+				</div>
+				<div class="col-xs-3">
+				    <label for="derivations">Derivations</a></label>
+				    <input type="number" class="form-control" id="public-key-derivations"  name="derivations" value="2" placeholder="">
+				</div>
+			  </div>
+			  <div class="form-group col-xs-12">
+			  	<br/>
+			  		<button type="submit" class="btn btn-success btn-block btn-lg btn-default">Submit</button>
+			  </div>
+			</form>
+		</div>
+
+		
+		<div class="report-container col-xs-12">
+			<div class="report col-xs-12">
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<script id="report-template" type="text/x-handlebars-template">
+		<h2>Address</h2>
+  		<table class="table table-striped">
+  			<thead>
+  				<tr>
+  					<th>Address</th>
+  					<th>Balance</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  				{{#each addresses}}
+  				<tr>
+  					<td>{{address}}</td>
+  					<td>{{balance}}</td>
+  				</tr>
+  				{{/each}}
+  			</tbody>
+  		</table>
+
+  		<h2>Change Addresses</h2>
+  		<table class="table table-striped">
+  			<thead>
+  				<tr>
+  					<th>Address</th>
+  					<th>Balance</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  				{{#each change}}
+  				<tr>
+  					<td>{{address}}</td>
+  					<td>{{balance}}</td>
+  				</tr>
+  				{{/each}}
+  			</tbody>
+  		</table>
+	</script>
+
+
+	<script>
+
+		$(document).ready(function(e){
+
+			var url = "/api/report?";
+			var source   = $("#report-template").html();
+			var template = Handlebars.compile(source);
+			
+			
+			$("#hd-report-form").on("submit", function(e){
+				e.preventDefault();
+				var data = $(this).serialize();
+				getReport(data);
+				
+			});
+
+			function getReport(data){
+				$('.indicator').show();
+				$.ajax({
+					url: url + data,
+					success: function(resp){
+						renderReport(resp);
+						$('.indicator').hide();
+					}
+				});
+			};
+
+			function renderReport(resp){
+				var html= template(resp);
+				$(".report").html(html).delay(1000).queue(function(){
+					$(".report-container").slideDown();
+				});
+
+
+			}
+		});
+	</script>
 </body>
 </html>
