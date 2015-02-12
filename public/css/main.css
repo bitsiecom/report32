@@ -13,10 +13,127 @@ img {
 	height:100%;
 	width:100%;
 }
+
+.banner {
+	font-family: "Monteserrat", "Helvetica", "Arial";
+	color: white;
+	margin: 25px 0 25px 0;
+}
+
+.banner img {
+	margin-top: 25px;
+	width: 165px;
+	height: 103px;
+}
+
 .report-container {
 	background: white;
 	display: none;
+	padding: 0;
+}
+.report-container .report {
+	padding: 0;
+}
+
+.report-container h1 {
+	background: #333;
+	color: white;
+	text-align: center;
+	font-size: 1em;
+	padding: 10px 0 10px 0;
+	margin-top: 0;
+	width: 100%;
+	font-weight: normal;
+}
+
+.report-container .report .report-inner {
+
+	padding: 15px;
+}
+
+.report-container table {
+	width: 100%;
+	margin: 0;
+	padding: 10px;
+}
+
+.report-container table td {
+	font-size: .8em;
+
+}
+
+.report-container h4 {
+	width: 100%;
+	background: #ececec;
+	padding: 10px 0 10px 10px;
+}
+
+.indicator-container {
+
+	width: 100%;
+	text-align: center;
+	position: fixed;
+	top: 0;
+	z-index: 9999;
 }
 .indicator {
+	background: #419641;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	width: 30%;
+	margin: 0 auto;
+	color: white;
 	display: none;
+	padding: 20px 30px 20px 30px;
+	text-align: center;
+}
+.well {
+	background: white;
+	border: none;
+}
+html body .help-link {
+	color: #888;
+	font-style: italic;
+	font-weight: normal;
+	text-align: center;
+	width: 100%;
+	margin: 15px 0 0px 0;
+}
+
+.help-link:hover{
+	text-decoration: none;
+	color: #333;
+}
+
+html body .form-group {
+	margin-bottom: 0px;
+}
+
+.modal-header {
+	background: #f7931a;
+	color: white;
+}
+
+.footer {
+	border: none;
+	margin: 30px 0 30px 0;
+}
+
+.footer a {
+	color: white;
+	font-weight: normal;
+	font-size: .7em;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.footer a img {
+	height: 35px;
+	width: 76px;
 }

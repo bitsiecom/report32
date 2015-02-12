@@ -1,32 +1,42 @@
 <html>
 <head>
 	
+	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/main.css" type="text/css" />
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-      <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
 </head>
 <body>
 
+	<div class="indicator-container">
+		<div class="indicator">
+			<i class="fa fa-clock-o"></i>
+			<span>Uno Momento</span>
+		</div>
+	</div>
+	
 	<div class="container-fluid">
 		<div class="col-xs-12 banner text-center">
-			<h1>HD REPORT</h1>
-			<h3>Simple Account Report for HD Wallets</h3>
-			<p>Short description of product goes here....</p>
-			<div class="indicator">Loading...</div>
-			<hr/>
+			<div class="col-xs-8 col-xs-offset-2">
+				<div class="col-xs-12 text-center">
+					<img src="img/HD_REPORT_logo.png" alt="HD REPORT" />
+				</div>
+				<div class="col-xs-12 text-center">
+					<h5>Simple Account Report for HD Wallets</h5>
+				</div>	
+			</div>
 		</div>
 
 		<div class="col-xs-6 col-xs-offset-3 well">
 			<form id="hd-report-form" class="form">
 			  <div class="form-group">
 			  	<div class="col-xs-9">
-				    <label for="exampleInputEmail1">Public Key <a href="#" class="pull-right"><small>Where do I find this? <i class="fa fa-info"></i></small></a></label>
-				    <input type="text" class="form-control" id="public-key-input"  name="xpub" value="xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8" placeholder="Enter public key">
+				    <label for="exampleInputEmail1">Public Key</label>
+				    <input type="text" class="form-control" id="public-key-input"  name="xpub" value="" placeholder="Enter public key">
 				</div>
 				<div class="col-xs-3">
 				    <label for="derivations">Derivations</a></label>
@@ -36,57 +46,91 @@
 			  <div class="form-group col-xs-12">
 			  	<br/>
 			  		<button type="submit" class="btn btn-success btn-block btn-lg btn-default">Submit</button>
+			  		<div class="col-xs-12 text-center">
+			  			<a href="#" data-toggle="modal" data-target="#help-modal" class="pull-right help-link"><small><i class="fa fa-info-circle"></i> Need help?</small></a>
+			  		</div>
 			  </div>
 			</form>
 		</div>
 
 		
-		<div class="report-container col-xs-12">
+		<div class="report-container col-xs-6 col-xs-offset-3">
 			<div class="report col-xs-12">
 
 			</div>
+		</div>
 
+		<div class="footer col-xs-12 text-center">
+			<a href="http://www.bitsie.com" target="_blank">powered by <img src="img/bitsie_logo_cutout_reversed.png" /></a>
 		</div>
 
 	</div>
 
 
-	<script id="report-template" type="text/x-handlebars-template">
-		<h2>Address</h2>
-  		<table class="table table-striped">
-  			<thead>
-  				<tr>
-  					<th>Address</th>
-  					<th>Balance</th>
-  				</tr>
-  			</thead>
-  			<tbody>
-  				{{#each addresses}}
-  				<tr>
-  					<td>{{address}}</td>
-  					<td>{{balance}}</td>
-  				</tr>
-  				{{/each}}
-  			</tbody>
-  		</table>
+	<div id="help-modal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">HD Report Help</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>HD Report is a simple tool that allows owners of an HD Wallet to view the balances derived public keysin a HD Wallet. The report shows the individual balances for each derived address as well as the change address.</p>
+	        	<h3>Where do I find my main Public Address?</h2>
+	        	<p>This depends on the wallet software you use, but what you are looking for is your XPUB Key, which starts with "xpub" followed by a long string of numbers. If you are using Wallet32 then you can find this in the settings menu of your HD wallet. If you are using trezor then you can find this on MyTrezor online or through the settings on your device.</p>
 
-  		<h2>Change Addresses</h2>
-  		<table class="table table-striped">
-  			<thead>
-  				<tr>
-  					<th>Address</th>
-  					<th>Balance</th>
-  				</tr>
-  			</thead>
-  			<tbody>
-  				{{#each change}}
-  				<tr>
-  					<td>{{address}}</td>
-  					<td>{{balance}}</td>
-  				</tr>
-  				{{/each}}
-  			</tbody>
-  		</table>
+	        	<h3>What are derivations</h3>
+	        	<p>The derivations input allows you to select the number of derived public keys you would like to see a report for</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+	<script id="report-template" type="text/x-handlebars-template">
+
+		<h1>HD Report</h1>
+
+		<div class="report-inner">
+			<h4>Address</h4>
+	  		<table class="table table-striped">
+	  			<thead>
+	  				<tr>
+	  					<th>Address</th>
+	  					<th>Balance</th>
+	  				</tr>
+	  			</thead>
+	  			<tbody>
+	  				{{#each addresses}}
+	  				<tr>
+	  					<td>{{address}}</td>
+	  					<td>{{balance}}</td>
+	  				</tr>
+	  				{{/each}}
+	  			</tbody>
+	  		</table>
+
+	  		<h4>Change Addresses</h4>
+	  		<table class="table table-striped">
+	  			<thead>
+	  				<tr>
+	  					<th>Address</th>
+	  					<th>Balance</th>
+	  				</tr>
+	  			</thead>
+	  			<tbody>
+	  				{{#each change}}
+	  				<tr>
+	  					<td>{{address}}</td>
+	  					<td>{{balance}}</td>
+	  				</tr>
+	  				{{/each}}
+	  			</tbody>
+	  		</table>
+  		</div>
 	</script>
 
 
@@ -101,6 +145,7 @@
 			
 			$("#hd-report-form").on("submit", function(e){
 				e.preventDefault();
+				$(".indicator").fadeIn();
 				var data = $(this).serialize();
 				getReport(data);
 				
@@ -112,15 +157,16 @@
 					url: url + data,
 					success: function(resp){
 						renderReport(resp);
-						$('.indicator').hide();
+						$(".indicator").fadeOut();
 					}
 				});
 			};
 
 			function renderReport(resp){
 				var html= template(resp);
-				$(".report").html(html).delay(1000).queue(function(){
+				$(".report").html(html).delay(500).queue(function(){
 					$(".report-container").slideDown();
+					$("html, body").animate({ scrollTop: $('.report-container').offset().top }, 1000);
 				});
 
 
