@@ -46,6 +46,7 @@
 			  <div class="form-group col-xs-12">
 			  	<br/>
 			  		<button type="submit" class="btn btn-success btn-block btn-lg btn-default">Submit</button>
+			  		<a id="try-it-out" class="btn btn-block btn-default">Try it out</a>
 			  		<div class="col-xs-12 text-center">
 			  			<a href="#" data-toggle="modal" data-target="#help-modal" class="pull-right help-link"><small><i class="fa fa-info-circle"></i> Need help?</small></a>
 			  		</div>
@@ -141,6 +142,14 @@
 			var url = "/api/report?";
 			var source   = $("#report-template").html();
 			var template = Handlebars.compile(source);
+
+			$("#try-it-out").click(function(e){
+				e.preventDefault();
+				$("#public-key-input").val("xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8");
+				$(".indicator").fadeIn();
+				var data = $("#hd-report-form").serialize();
+				getReport(data);
+			})
 			
 			
 			$("#hd-report-form").on("submit", function(e){
