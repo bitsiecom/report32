@@ -75,15 +75,10 @@ img {
 	position: fixed;
 	top: 0;
 	z-index: 9999;
+	background: #419641;
 }
 .indicator {
 	background: #419641;
-	-webkit-border-bottom-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
 	width: 30%;
 	margin: 0 auto;
 	color: white;
