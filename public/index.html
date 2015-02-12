@@ -40,7 +40,7 @@
 				</div>
 				<div class="col-xs-3">
 				    <label for="derivations">Derivations</a></label>
-				    <input type="number" class="form-control" id="public-key-derivations"  name="derivations" value="2" placeholder="">
+				    <input type="number" class="form-control" id="public-key-derivations"  name="derivations" value="20" placeholder="">
 				</div>
 			  </div>
 			  <div class="form-group col-xs-12">
@@ -75,12 +75,12 @@
 	        <h4 class="modal-title">HD Report Help</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p>HD Report is a simple tool that allows owners of an HD Wallet to view the balances derived public keysin a HD Wallet. The report shows the individual balances for each derived address as well as the change address.</p>
+	        <p>HD Report is a simple tool that allows owners of an HD Wallet to view the balances derived public keys in their HD Wallet. The report shows the individual balances for each derived address as well as the change addresses.</p>
 	        	<h3>Where do I find my main Public Address?</h2>
-	        	<p>This depends on the wallet software you use, but what you are looking for is your XPUB Key, which starts with "xpub" followed by a long string of numbers. If you are using Wallet32 then you can find this in the settings menu of your HD wallet. If you are using trezor then you can find this on MyTrezor online or through the settings on your device.</p>
+	        	<p>This depends on the wallet software you use, but what you are looking for is your XPUB Key, which starts with "xpub" followed by a long string of numbers. If you are using Wallet32 then you can find this in the settings menu of your HD wallet. If you are using Trezor then you can find this on MyTrezor online or through the settings on your device.</p>
 
 	        	<h3>What are derivations?</h3>
-	        	<p>The derivations input allows you to select the number of derived public keys you would like to see a report for</p>
+	        	<p>The derivations input allows you to select the number of derived public keys you would like to see on the report.</p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -95,7 +95,7 @@
 		<h1>HD Report</h1>
 
 		<div class="report-inner">
-			<h4>Address</h4>
+			<h4>Derived Addresses</h4>
 	  		<table class="table table-striped">
 	  			<thead>
 	  				<tr>
